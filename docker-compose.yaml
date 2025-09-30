@@ -1,0 +1,43 @@
+services:
+  onepal_db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    networks:
+      - onepal_network
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+  onepal_app:
+    build:
+      context: .
+      args:
+        MIX_ENV: ${ENV}
+        DB_USERNAME: ${DB_USERNAME}
+        DB_PASSWORD: ${DB_PASSWORD}
+        DB_NAME: ${DB_NAME}
+        DB_HOST: onepal_db
+        USER_ID: $(id -u)
+        GROUP_ID: $(id -g)
+    volumes:
+      - ./app:/app
+      - deps:/app/deps
+      - build:/app/_build
+    userns_mode: "host"
+    ports:
+      - "4000:4000"
+    depends_on:
+      - onepal_db
+    networks:
+      - onepal_network
+
+networks:
+  onepal_network:
+    driver: bridge
+
+volumes:
+  deps:
+  build:
+  postgres-db:
