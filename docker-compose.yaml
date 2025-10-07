@@ -13,14 +13,6 @@ services:
   onepal_app:
     build:
       context: .
-      args:
-        MIX_ENV: ${ENV}
-        DB_USERNAME: ${DB_USERNAME}
-        DB_PASSWORD: ${DB_PASSWORD}
-        DB_NAME: ${DB_NAME}
-        DB_HOST: onepal_db
-        USER_ID: $(id -u)
-        GROUP_ID: $(id -g)
     volumes:
       - ./app:/app
       - deps:/app/deps
