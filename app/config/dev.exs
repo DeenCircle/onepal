@@ -56,6 +56,7 @@ config :onepal, OnepalWeb.Endpoint,
 config :onepal, OnepalWeb.Endpoint,
   live_reload: [
     web_console_logger: true,
+    reloadable_apps: [:ui, :backend],
     patterns: [
       ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
