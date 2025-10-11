@@ -34,7 +34,7 @@ defmodule Onepal.Accounts.User do
   @doc """
   Update a user first and last name
   """
-  def name_changeset(user, attrs, opts \\ []) do
+  def name_changeset(user, attrs) do
     user
     |> cast(attrs, [:first_name, :last_name])
 
