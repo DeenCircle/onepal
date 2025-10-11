@@ -17,6 +17,15 @@ defmodule Onepal.AccountsTest do
     end
   end
 
+  describe "testing user functionality" do
+    test "Testing username" do
+      %{first_name: first_name, last_name: last_name} = user = user_fixture()
+
+      assert %User{first_name: ^first_name, last_name: ^last_name} =
+               Accounts.get_user_by_email(user.email)
+    end
+  end
+
   describe "get_user_by_email_and_password/2" do
     test "does not return the user if the email does not exist" do
       refute Accounts.get_user_by_email_and_password("unknown@example.com", "hello world!")

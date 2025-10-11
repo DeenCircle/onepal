@@ -76,6 +76,7 @@ defmodule Onepal.Accounts do
   """
   def register_user(attrs) do
     %User{}
+    |> User.name_changeset(attrs)
     |> User.email_changeset(attrs)
     |> Repo.insert()
   end

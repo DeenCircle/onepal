@@ -68,7 +68,8 @@ defmodule Onepal.MixProject do
       {:dns_cluster, "~> 0.2.0"},
       {:bandit, "~> 1.5"},
       {:dotenvy, "~> 1.0.0"},
-      {:open_api_spex, "~> 3.21"}
+      {:open_api_spex, "~> 3.21"},
+      {:faker, "~> 0.18", only: :test}
     ]
   end
 

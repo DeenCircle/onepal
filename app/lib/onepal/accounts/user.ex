@@ -3,6 +3,8 @@ defmodule Onepal.Accounts.User do
   import Ecto.Changeset
 
   schema "users" do
+    field :first_name, :string
+    field :last_name, :string
     field :email, :string
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
@@ -27,6 +29,16 @@ defmodule Onepal.Accounts.User do
     user
     |> cast(attrs, [:email])
     |> validate_email(opts)
+  end
+
+  @doc """
+  Update a user first and last name
+  """
+  def name_changeset(user, attrs, opts \\ []) do
+    user
+    |> cast(attrs, [:first_name, :last_name])
+
+    # TODO: validate name |> validate_name(opts)
   end
 
   defp validate_email(changeset, opts) do

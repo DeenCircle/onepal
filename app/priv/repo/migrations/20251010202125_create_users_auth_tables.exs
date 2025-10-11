@@ -5,6 +5,8 @@ defmodule Onepal.Repo.Migrations.CreateUsersAuthTables do
     execute "CREATE EXTENSION IF NOT EXISTS citext", ""
 
     create table(:users) do
+      add :first_name, :string
+      add :last_name, :string
       add :email, :citext, null: false
       add :hashed_password, :string
       add :confirmed_at, :utc_datetime
