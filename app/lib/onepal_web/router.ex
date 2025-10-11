@@ -15,12 +15,20 @@ defmodule OnepalWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug OpenApiSpex.Plug.PutApiSpec, module: OnepalWeb.ApiSpec
   end
 
   scope "/", OnepalWeb do
     pipe_through :browser
 
     get "/", PageController, :home
+  end
+
+  # Enable serving swaggerui
+  scope "/" do
+    # Use the default browser stack
+    pipe_through :browser
+    get "/swaggerui", OpenApiSpex.Plug.SwaggerUI, path: "/api/openapi"
   end
 
   # Other scopes may use custom stacks.
@@ -71,5 +79,10 @@ defmodule OnepalWeb.Router do
 
     post "/users/log-in", UserSessionController, :create
     delete "/users/log-out", UserSessionController, :delete
+  end
+
+  scope "/api" do
+    pipe_through :api
+    get "/openapi", OpenApiSpex.Plug.RenderSpec, []
   end
 end
