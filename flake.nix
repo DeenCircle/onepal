@@ -15,7 +15,10 @@
           elixir
           inotify-tools
         ];
+        shellHook = ''
+          cd app || exit 1
+          alias start="iex -S mix phx.server";
+        '';
       };
-  };
-
+    };
 }
