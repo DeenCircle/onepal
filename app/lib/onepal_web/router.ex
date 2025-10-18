@@ -58,6 +58,7 @@ defmodule OnepalWeb.Router do
   scope "/", OnepalWeb do
     pipe_through [:browser, :require_authenticated_user]
 
+    ## Account region
     live_session :require_authenticated_user,
       on_mount: [{OnepalWeb.UserAuth, :require_authenticated}] do
       live "/users/settings", UserLive.Settings, :edit
@@ -65,6 +66,15 @@ defmodule OnepalWeb.Router do
     end
 
     post "/users/update-password", UserSessionController, :update_password
+
+    ## Activity region
+    get "/activities", ActiviyController, :index
+    get "/activities/new", ActiviyController, :new
+    get "/activities/:id", ActiviyController, :show
+    put "/activities/:id", ActiviyController, :update
+    delete "/activities/:id", ActiviyController, :delete
+    post "/activities", ActiviyController, :create
+    get "/activities/:id/edit", ActiviyController, :edit
   end
 
   scope "/", OnepalWeb do
