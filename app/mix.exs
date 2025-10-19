@@ -69,7 +69,8 @@ defmodule Onepal.MixProject do
       {:bandit, "~> 1.5"},
       {:dotenvy, "~> 1.0.0"},
       {:open_api_spex, "~> 3.21"},
-      {:faker, "~> 0.18", only: :test}
+      {:faker, "~> 0.18", only: :test},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
     ]
   end
 
