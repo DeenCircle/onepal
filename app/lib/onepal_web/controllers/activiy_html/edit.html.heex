@@ -1,8 +1,0 @@
-<Layouts.app flash={@flash} current_scope={@current_scope}>
-  <.header>
-    Edit Activiy {@activiy.id}
-    <:subtitle>Use this form to manage activiy records in your database.</:subtitle>
-  </.header>
-
-  <.activiy_form changeset={@changeset} action={~p"/activities/#{@activiy}"} return_to={~p"/activities"} />
-</Layouts.app>

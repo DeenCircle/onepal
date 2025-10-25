@@ -68,13 +68,13 @@ defmodule OnepalWeb.Router do
     post "/users/update-password", UserSessionController, :update_password
 
     ## Activity region
-    get "/activities", ActiviyController, :index
-    get "/activities/new", ActiviyController, :new
-    get "/activities/:id", ActiviyController, :show
-    put "/activities/:id", ActiviyController, :update
-    delete "/activities/:id", ActiviyController, :delete
-    post "/activities", ActiviyController, :create
-    get "/activities/:id/edit", ActiviyController, :edit
+    # get "/activities", ActiviyController, :index
+    # get "/activities/new", ActiviyController, :new
+    # get "/activities/:id", ActiviyController, :show
+    # put "/activities/:id", ActiviyController, :update
+    # delete "/activities/:id", ActiviyController, :delete
+    # post "/activities", ActiviyController, :create
+    # get "/activities/:id/edit", ActiviyController, :edit
   end
 
   scope "/", OnepalWeb do
