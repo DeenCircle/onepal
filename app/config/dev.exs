@@ -56,6 +56,7 @@ config :onepal, OnepalWeb.Endpoint,
 config :onepal, OnepalWeb.Endpoint,
   live_reload: [
     web_console_logger: true,
+    reloadable_apps: [:ui, :backend],
     patterns: [
       ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
@@ -86,3 +87,6 @@ config :phoenix_live_view,
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
+
+# Open Api specs allow reloading in dev env
+config :open_api_spex, :cache_adapter, OpenApiSpex.Plug.NoneCache
