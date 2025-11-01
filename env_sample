@@ -1,0 +1,5 @@
+ENV=dev
+DB_USERNAME=onepal
+DB_PASSWORD=onepal
+DB_NAME=onepal
+DB_HOST=localhost

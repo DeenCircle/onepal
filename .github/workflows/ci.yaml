@@ -43,21 +43,7 @@ jobs:
           mix local.rebar --force
           mix local.hex --force
 
-      # - name: Cache
-      #   uses: actions/cache@v4
-      #   id: cache
-      #   with:
-      #     key: elixir-${{ hashFiles('Dockerfile', 'mix.lock') }}-${{ github.ref }}-test
-      #     restore-keys: |
-      #       elixir-${{ hashFiles('Dockerfile', 'mix.lock') }}-${{ github.ref }}-
-      #       elixir-${{ hashFiles('Dockerfile', 'mix.lock') }}-
-      #       elixir-
-      #     path: |
-      #       _build
-      #       deps
-
       - name: Install (deps)
-        if: steps.cache.outputs.cache-hit != 'true'
         run: mix deps.get
 
       - name: Compilation
@@ -79,7 +65,7 @@ jobs:
         working-directory: app
 
     container:
-      image: elixir:1.13.3-slim
+      image: elixir:1.14
 
     steps:
       - name: Checkout
@@ -107,7 +93,7 @@ jobs:
         working-directory: app
 
     container:
-      image: elixir:1.13.3-slim
+      image: elixir:1.15
 
     steps:
       - name: Checkout
@@ -123,21 +109,7 @@ jobs:
           mix local.rebar --force
           mix local.hex --force
 
-      - name: Cache
-        uses: actions/cache@v4
-        id: cache
-        with:
-          key: elixir-${{ hashFiles('Dockerfile', 'mix.lock') }}-${{ github.ref }}-credo
-          restore-keys: |
-            elixir-${{ hashFiles('Dockerfile', 'mix.lock') }}-${{ github.ref }}-
-            elixir-${{ hashFiles('Dockerfile', 'mix.lock') }}-
-            elixir-
-          path: |
-            _build
-            deps
-
       - name: Install (deps)
-        if: steps.cache.outputs.cache-hit != 'true'
         run: mix deps.get
 
       - name: Credo
