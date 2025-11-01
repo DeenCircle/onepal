@@ -23,7 +23,7 @@ jobs:
       redis: redis:alpine
 
       postgres:
-        image: postgres:13
+        image: postgres:18
         env:
           POSTGRES_DB: test_db
           POSTGRES_USER: onepal_user
