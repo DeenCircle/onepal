@@ -17,7 +17,7 @@ jobs:
         working-directory: app
 
     container:
-      image: elixir:1.13.3-slim
+      image: elixir:1.15
 
     services:
       redis: redis:alpine
