@@ -1,22 +1,34 @@
 ## <center> بسم الله الرحمن الرحيم </center>
 
-OnePal application
+# OnePal
 
+A modern web application built with Phoenix and Elixir for managing activities and user interactions.
 
-### WARNING
-this project is in pre alpha state, if you want to join the effort join our Discord!
+**⚠️ Pre-Alpha Warning:** This project is in early development. Expect bugs and incomplete features. Join our Discord to contribute!
 
+## Features
 
-### Development
-`git clone the project`
+- User authentication and account management
+- Activity creation and tracking
+- Responsive web interface with LiveView
 
-#### Using Docker (coming soon ...)
+## Installation
 
-#### Using Nix
-`cp app/.envs/evn_sample app/.envs/.env`
-you will need postgres DB to connect to
-`export the configurations from evn_sample to match your own postgres DB`
-`nix develop .`
+### Prerequisites
+- Elixir 1.14+ or Nix
+- PostgreSQL
+- Node.js (for asset compilation)
 
-open http://localhost:4000 in your browser
+## Development
+
+### Using Nix
+1. `cp env_sample .env`
+2. Configure PostgreSQL in `.env`
+3. `nix develop .`
+4. Start server as above
+
+### Using Docker
+Coming soon!
+
+Join our Discord for discussions!
 
