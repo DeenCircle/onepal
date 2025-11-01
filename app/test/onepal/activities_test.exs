@@ -25,7 +25,10 @@ defmodule Onepal.ActivitiesTest do
       activity = activity_fixture(scope)
       other_scope = user_scope_fixture()
       assert Activities.get_activity!(scope, activity.id) == activity
-      assert_raise Ecto.NoResultsError, fn -> Activities.get_activity!(other_scope, activity.id) end
+
+      assert_raise Ecto.NoResultsError, fn ->
+        Activities.get_activity!(other_scope, activity.id)
+      end
     end
 
     test "create_activity/2 with valid data creates a activity" do
@@ -48,7 +51,9 @@ defmodule Onepal.ActivitiesTest do
       activity = activity_fixture(scope)
       update_attrs = %{title: "some updated title", paragraph: "some updated paragraph"}
 
-      assert {:ok, %Activity{} = activity} = Activities.update_activity(scope, activity, update_attrs)
+      assert {:ok, %Activity{} = activity} =
+               Activities.update_activity(scope, activity, update_attrs)
+
       assert activity.title == "some updated title"
       assert activity.paragraph == "some updated paragraph"
     end
@@ -66,7 +71,10 @@ defmodule Onepal.ActivitiesTest do
     test "update_activity/3 with invalid data returns error changeset" do
       scope = user_scope_fixture()
       activity = activity_fixture(scope)
-      assert {:error, %Ecto.Changeset{}} = Activities.update_activity(scope, activity, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               Activities.update_activity(scope, activity, @invalid_attrs)
+
       assert activity == Activities.get_activity!(scope, activity.id)
     end
 
