@@ -65,7 +65,7 @@ jobs:
         working-directory: app
 
     container:
-      image: elixir:1.14
+      image: elixir:1.15
 
     steps:
       - name: Checkout
