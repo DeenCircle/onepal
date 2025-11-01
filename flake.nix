@@ -16,6 +16,11 @@
           inotify-tools
         ];
         shellHook = ''
+          if [ -f .env ]; then
+            set -a
+            source .env
+            set +a
+          fi
           cd app || exit 1
           alias start="iex -S mix phx.server";
         '';
