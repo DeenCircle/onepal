@@ -1,5 +1,4 @@
 import Config
-import Dotenvy
 
 # config/runtime.exs is executed for all environments, including
 # during releases. It is executed after compilation and before the
@@ -7,22 +6,6 @@ import Dotenvy
 # and secrets from environment variables or elsewhere. Do not define
 # any compile-time configuration in here, as it won't be applied.
 # The block below contains prod specific runtime configuration.
-
-# ## Loading Env's to configure the DB
-# load all files (ending with .env) inside envs/ 
-env_dir_prefix = System.get_env("RELEASE_ROOT") || Path.expand("./envs")
-
-source!([
-  Path.absname(".env", env_dir_prefix),
-  # load system env as well
-  System.get_env()
-])
-
-config :onepal, Onepal.Repo,
-  database: env!("DB_NAME", :string!),
-  username: env!("DB_USERNAME", :string),
-  password: env!("DB_PASSWORD", :string),
-  hostname: env!("DB_HOST", :string!)
 
 # ## Using releases
 #
